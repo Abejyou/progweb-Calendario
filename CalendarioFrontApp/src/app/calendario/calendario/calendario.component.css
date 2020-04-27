@@ -1,0 +1,22 @@
+.celula-calendario{
+    border: 1px solid #343434
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-gap: 2px;
+    background-color: #343434;
+    padding: 2px;
+  }
+  
+  .grid-container > div {
+    background-color: #EDEDED;
+    text-align: center;
+    padding: 4px 0;
+    font-size: 30px;
+  }
+  
+  .cabecalho {
+    grid-column: 1 / 8;
+  }
