@@ -1,0 +1,14 @@
+1. Login no servidor - (usuario e senha)
+1.1. Recuperação de usuário (e-mail/senha)
+2. Calendário - Calendário detalhado com todos os dias, semana, mês, divididos em 12.
+2.1. Botão para navegar entre os meses do ano.
+2.2. Botão de destaque para quando tiver eventos disponíveis.
+2.3. Botão de inserir novo evento.
+2.4. Botão de excluir/cancelar evento.
+3. Lista de compromissos.
+4. Lista de convites.
+5. Dia - Quando clicado no dia selecionado, detalhar as horas do dia (00-23h59), mostrando todos os eventos do dia, separados por hora, do inicio ao término de tal evento.
+6. Evento - Quando clicado no evento selecionado, detalhar tudo sobre o evento a seguir.
+7. Editar evento - Usuários admnistradores (ou seja, quem criou o evento), podem editar seus eventos após serem criados.
+8. Convidar pessoas - Usuários podem convidar pessoas para seus eventos. As pessoas que são convidadas, recebem com o convite, uma notificação informando dia, hora e detalhes do evento. 
+9. Notificações - Notificações podem ser disparadas aos usuários. Como exemplo de notificações, temos eventos próximos, motivos de cancelamento e etc.
