@@ -63,7 +63,6 @@ Para usar CalendarioProgWeb, siga os seguintes passos (exemplos):
 
 As seguintes pessoas contribuiram para este projeto:
 
-* [Fábio Shiniti Nakazato](https://github.com/Fabnaka)
 * [Flavio Augusto Corrêa de Souza](https://github.com/flaviocsouza)
 * [Helionardo Pereira Justi](https://github.com/helionardo)
 * [Jéssica Abe de Almeida](https://github.com/Abejyou)
