@@ -14,6 +14,7 @@ import { CalendarioComponent } from './calendario/calendario/calendario.componen
 import { EventosComponent } from './calendario/eventos/eventos.component';
 import { ConvitesComponent } from './calendario/convites/convites.component';
 import { ContatoComponent } from './institucional/contato/contato.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ContatoComponent } from './institucional/contato/contato.component';
     CalendarioComponent,
     EventosComponent,
     ConvitesComponent,
-    ContatoComponent
+    ContatoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
