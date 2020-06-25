@@ -1,12 +1,51 @@
-<form>
-    <div class="form-group">
-        <label>Adicionar Título do Evento</label>
-        <input type="text" name="titulo" class="form-control">
-    </div>
-    <input type="datetime" name="dataHorario">
-    <input type="text" name="localEvento">
-    <input type="text" name="emailConvidados">
-    <input type="number" name="diasNotificacao">
-    <input type="time" name="horaNotificacao">
-    <textarea name="descricao"></textarea>
-</form>
+<div class="col-12">
+    <form>
+        <div class="form-group">
+            <label>Adicionar Título do Evento</label>
+            <input type="text" name="titulo" class="form-control" placeholder="Título do Evento"> 
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label for="">Data do Evento</label>
+                <input type="date" name="dataHorario" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">
+                <label>Inicio</label>
+                <input type="time" name="horaInicio" class="form-control">
+            </div>
+            <div class="col-1">
+                <label>Término</label>
+                <input type="time" name="horaTermino" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <label class="sr-only" for="inlineFormInputGroup">Local</label>
+                <div class="input-group mb-2 mt-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Local" name="local">
+                    
+                </div>
+            </div>
+        </div>  
+        <input type="text" name="emailConvidados">
+
+        <input type="number" name="diasNotificacao">
+        <input type="time" name="horaNotificacao">
+        <div class="form-group">
+            <label for="descricaoEvento">Descrição do Evento</label>
+            <textarea class="form-control" id="descricaoEvento" name="descricao" rows="5"></textarea>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Salvar Evento</button>
+        </div>   
+    </form>
+</div>

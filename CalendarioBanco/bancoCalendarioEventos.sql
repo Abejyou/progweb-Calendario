@@ -5,5 +5,15 @@ nome VARCHAR(50) NOT NULL,
 email VARCHAR(50) NOT NULL,
 senha VARCHAR(50) NOT NULL,
 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE Table evento(
+	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    titulo_evento VARCHAR(50) NOT NULL,
+    local_evento VARCHAR(50) NOT NULL,
+    data_inicio datetime NOT NULL,
+    data_fim datetime NOT NULL,
+    descricao varchar(500),
+    
 )
 
