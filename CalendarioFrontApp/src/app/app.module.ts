@@ -15,6 +15,7 @@ import { EventosComponent } from './calendario/eventos/eventos.component';
 import { ConvitesComponent } from './calendario/convites/convites.component';
 import { ContatoComponent } from './institucional/contato/contato.component';
 import { LoginComponent } from './login/login.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     EventosComponent,
     ConvitesComponent,
     ContatoComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
