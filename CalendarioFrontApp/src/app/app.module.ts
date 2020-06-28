@@ -18,7 +18,8 @@ import { ContatoComponent } from './institucional/contato/contato.component';
 import { DiaCalendarioComponent } from './calendario/dia-calendario/dia-calendario.component';
 
 import { LoginComponent } from './login/login.component';
-import { CadastroComponent } from './cadastro/cadastro.component'
+import { CadastroComponent } from './cadastro/cadastro.component';
+import { DiaComponent } from './calendario/dia/dia.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CadastroComponent } from './cadastro/cadastro.component'
     ContatoComponent,
     DiaCalendarioComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    DiaComponent
   ],
   imports: [
     BrowserModule,

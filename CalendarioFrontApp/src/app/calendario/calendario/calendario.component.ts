@@ -39,7 +39,6 @@ export class CalendarioComponent implements OnInit {
       this.dias.push(arrDia);      
     }
 
-    console.log(this.dias)
   }
 
 }

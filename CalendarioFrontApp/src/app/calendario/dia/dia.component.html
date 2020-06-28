@@ -1,0 +1,20 @@
+<h1>{{data.toLocaleString()}}</h1>
+
+<h2>Eventos</h2>
+<table class="table">
+    <thead>
+        <th scope="col">Titulo</th>
+        <th scope="col">Inicio</th>
+        <th scope="col">fim</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let evento of dia.eventos" 
+            id="{{evento.id}}"
+            (click)="enviaParaEvento(evento)">
+            <td>{{evento.titulo}}</td>
+            <td>{{evento.inicio}}</td>
+            <td>{{evento.fim}}</td>
+        </tr>
+        
+    </tbody>
+</table>
