@@ -35,11 +35,15 @@ function execQuery(query, res, callback) {
 router.get('/', (req, res) => res.json({ message: 'Server Funcionando!' }));
 app.use('/', router);
 
+
+
 router.get('/usuario', (req, res) => {
   execQuery('SELECT * FROM usuario', res, (results) => {
     res.json(results);
   });
 });
+
+
 router.get('/evento', (req, res) => {
   execQuery('SELECT E.*, N.id as notificacao_id, N.data_notificacao as notificacao_data_notificacao ' +
     'FROM evento E LEFT JOIN notificacao N ON N.id_evento = E.id', res, (data) => {
@@ -89,6 +93,18 @@ router.post('/evento', (req, res) => {
   }
 });
 
+router.get('/eventospormes', (req, res) =>{
+  const params = req.query;
+  console.log('entrou envios por mes');
+  const query = `
+            SELECT * FROM evento 
+            WHERE (MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
+            OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano})  `;
+  execQuery(query, res, results => res.json(results));
+
+});
+
+
 router.get('/notificacao', (req, res) => {
   execQuery('SELECT * FROM notificacao', res, (results) => {
     res.json(results);
@@ -112,6 +128,8 @@ router.post('/notificacao', (req, res) => {
       });
   }
 });
+
+
 
 app.listen(config.serverPort, function () {
   console.log('http://localhost:' + config.serverPort);

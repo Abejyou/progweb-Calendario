@@ -36,6 +36,14 @@ CREATE TABLE `usuario` (
   `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+
+CREATE TABLE `usuario_evento` (
+  `id_usuario`int(6) NOT NULL,
+  `id_evento` int(6) NOT NULL,
+  `dono_evento` boolean NOT NULL,
+  `confirmado` boolean
+);
+
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`id`);
 
