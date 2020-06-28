@@ -1,40 +1,11 @@
 <div class="container"> 
     <div class="grid-container">
-        <div class="cabecalho"><p>teste</p></div>
-        <div><p>Domingo</p></div>
-        <div><p>Segunda</p></div>
-        <div><p>Terça</p></div>
-        <div><p>Quarta</p></div>
-        <div><p>Quinta</p></div>
-        <div><p>Sexta</p></div>
-        <div><p>Sabado</p></div>
-        <div><p>Domingo</p></div>
-        <div><p>Segunda</p></div>
-        <div><p>Terça</p></div>
-        <div><p>Quarta</p></div>
-        <div><p>Quinta</p></div>
-        <div><p>Sexta</p></div>
-        <div><p>Sabado</p></div>
-        <div><p>Domingo</p></div>
-        <div><p>Segunda</p></div>
-        <div><p>Terça</p></div>
-        <div><p>Quarta</p></div>
-        <div><p>Quinta</p></div>
-        <div><p>Sexta</p></div>
-        <div><p>Sabado</p></div>
-        <div><p>Domingo</p></div>
-        <div><p>Segunda</p></div>
-        <div><p>Terça</p></div>
-        <div><p>Quarta</p></div>
-        <div><p>Quinta</p></div>
-        <div><p>Sexta</p></div>
-        <div><p>Sabado</p></div>
-        <div><p>Domingo</p></div>
-        <div><p>Segunda</p></div>
-        <div><p>Terça</p></div>
-        <div><p>Quarta</p></div>
-        <div><p>Quinta</p></div>
-        <div><p>Sexta</p></div>
-        <div><p>Sabado</p></div>
+        <div class="cabecalho"><p> {{this.meses[this.mes]}}/{{this.ano}}</p></div>        
+        <div *ngFor="let diaSemana of diasDaSemana">
+            <p>{{diaSemana}}</p>
+        </div>
+            <div class="vazio" *ngFor="let vazio of diasAntesComecoMes">            
+        </div>
+        <app-dia-calendario *ngFor="let dia of dias" [dia]="dia"></app-dia-calendario>
     </div>
 </div>

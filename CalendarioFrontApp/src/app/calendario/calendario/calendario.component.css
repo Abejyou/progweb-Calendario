@@ -8,6 +8,11 @@
     grid-gap: 2px;
     background-color: #343434;
     padding: 2px;
+    
+  }
+
+  .container{
+    padding-top: 3vw;
   }
   
   .grid-container > div {
@@ -15,8 +20,21 @@
     text-align: center;
     padding: 4px 0;
     font-size: 30px;
+    
+  }
+
+  .grid-container > .dia:hover {
+    background-color: #DDDDDD;
+    text-align: center;
+    padding: 4px 0;
+    font-size: 30px;
   }
   
   .cabecalho {
     grid-column: 1 / 8;
+  }
+
+   
+  .vazio{
+    background-color: #343434 !important;
   }
