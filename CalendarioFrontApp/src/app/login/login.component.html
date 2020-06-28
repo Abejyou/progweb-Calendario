@@ -1,4 +1,4 @@
-<form class="ml-3">
+<div class="ml-3">
   <div class="form-group" style="width: 30%">
     <label for="exampleInputEmail1">E-mail</label>
     <input type="email" class="form-control" id="emaillogin" aria-describedby="emailHelp">
@@ -13,8 +13,8 @@
       <input type="checkbox" value="remember-me"> Lembre-se de mim
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Logar</button>
+  <button class="btn btn-primary"  (click)="efetuaLogin()" >Logar</button>
   <div class="alert alert-info" role="alert" style="width: 22%;">
       Esqueceu sua senha? <a href="#" class="alert-link">Clique aqui!</a>
     </div>
-  </form>
+  </div>

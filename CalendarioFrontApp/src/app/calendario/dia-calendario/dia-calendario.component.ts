@@ -16,8 +16,7 @@ export class DiaCalendarioComponent {
   ){ }
   
   navegarParaDia(){
-    console.log('teste')
-    this.router.navigate(['/dia/', this.dia.data.toString()]);
+    this.router.navigate(['/dia', this.dia.data.toString()]);
   }
 
 }
