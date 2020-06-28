@@ -14,7 +14,11 @@ import { CalendarioComponent } from './calendario/calendario/calendario.componen
 import { EventosComponent } from './calendario/eventos/eventos.component';
 import { ConvitesComponent } from './calendario/convites/convites.component';
 import { ContatoComponent } from './institucional/contato/contato.component';
+
 import { DiaCalendarioComponent } from './calendario/dia-calendario/dia-calendario.component';
+
+import { LoginComponent } from './login/login.component';
+import { CadastroComponent } from './cadastro/cadastro.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { DiaCalendarioComponent } from './calendario/dia-calendario/dia-calendar
     EventosComponent,
     ConvitesComponent,
     ContatoComponent,
-    DiaCalendarioComponent
+    DiaCalendarioComponent,
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
