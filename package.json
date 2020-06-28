@@ -1,0 +1,17 @@
+{
+  "name": "calendario-progweb",
+  "version": "0.0.0",
+  "scripts": {
+    "installFront": "cd CalendarioFrontApp && npm i",
+    "installBack": "cd CalendarioBackApp && npm i",
+    "install": "npm run installFront && npm run installBack",
+    "StartFront": "cd CalendarioFrontApp && npm run start",
+    "StartBack": "node CalendarioBackApp/index.js",
+    "Start": "npm run StartFront && npm run StartBack"
+  },
+  "private": true,
+  "dependencies": {
+    
+  },
+  "devDependencies": {}
+}
