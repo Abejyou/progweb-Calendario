@@ -1,108 +1,66 @@
 <div class="col-12">
     <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
-            <div class="form-group">
-                <label>Adicionar Título do Evento</label>
-                <input type="text" ngModel name="titulo" class="form-control" placeholder="Título do Evento">
+        <div class="form-group">
+            <label>Adicionar Título do Evento</label>
+            <input type="text" ngModel name="titulo" class="form-control" placeholder="Título do Evento">
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <label for="">Data do Evento</label>
+                <input type="date" ngModel name="dataHorario" class="form-control">
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <label for="">Data do Evento</label>
-                    <input type="date" ngModel name="dataHorario" class="form-control">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <label>Inicio</label>
+                <input type="time" ngModel name="horaInicio" class="form-control">
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <label>Inicio</label>
-                    <input type="time" ngModel name="horaInicio" class="form-control">
-                </div>
-                <div class="col-auto">
-                    <label>Término</label>
-                    <input type="time" ngModel name="horaTermino" class="form-control">
-                </div>
+            <div class="col-auto">
+                <label>Término</label>
+                <input type="time" ngModel name="horaTermino" class="form-control">
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <label class="sr-only" for="inlineFormInputGroup">Local</label>
-                    <div class="input-group mb-2 mt-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                                </svg>
-                            </div>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <label class="sr-only" for="inlineFormInputGroup">Local</label>
+                <div class="input-group mb-2 mt-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <svg class="bi bi-geo-alt" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            </svg>
                         </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Local" ngModel
-                            name="local">
                     </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Local" ngModel
+                        name="local">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-6">
-                    <div *ngFor="let i of notificacoes">
-                        <div class="row">
-                            <div class="col-auto">
-                                <select ngModel name="tipoNotificacao" class="form-control">
-                                    <option value="">Selecione</option>
-                                    <option value="notificacao">Notificação</option>
-                                    <option value="email">E-mail</option>
-                                </select>
-                            </div>
-                            <div class="col-auto">
-                                <select ngModel name="tipoIntervaloTempo" class="form-control">
-                                    <option value="dia">Dia</option>
-                                    <option value="semana">Semana</option>
-                                </select>
-                            </div>
-                            <div class="col-auto">
-                                <input type="number" ngModel name="quantidadeTempo" class="form-control" min="1"
-                                    max="30" [value]="i.quantidade">
-                            </div>
-                            <div class="col-auto">
-                                <input type="time" ngModel name="horaNotificacao" class="form-control">
-                            </div>
-                            <div class="col-auto">
-                                <button type="button" class="btn btn-danger">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
-                                        <path fill-rule="evenodd"
-                                            d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div *ngFor="let i of notificacoes">
                     <div class="row">
                         <div class="col-auto">
-                            <button type="button" class="btn btn-secondary">
-                                <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
-                                    <path fill-rule="evenodd"
-                                        d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
-                                </svg>
-                                Adicionar Notificação
-                            </button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="descricaoEvento">Descrição do Evento</label>
-                        <textarea class="form-control" id="descricaoEvento" ngModel name="descricao"
-                            rows="5"></textarea>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="row">
-                        <div class="col-auto">
-                            <select ngModel name="convite" class="form-control">
-                                <input type="text" ngModel name="emailConvidados" class="form-control">
+                            <select ngModel name="tipoNotificacao" class="form-control">
+                                <option value="">Selecione</option>
+                                <option value="notificacao">Notificação</option>
+                                <option value="email">E-mail</option>
                             </select>
+                        </div>
+                        <div class="col-auto">
+                            <select ngModel name="tipoIntervaloTempo" class="form-control">
+                                <option value="dia">Dia</option>
+                                <option value="semana">Semana</option>
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" ngModel name="quantidadeTempo" class="form-control" min="1" max="30"
+                                [value]="i.quantidade">
+                        </div>
+                        <div class="col-auto">
+                            <input type="time" ngModel name="horaNotificacao" class="form-control">
                         </div>
                         <div class="col-auto">
                             <button type="button" class="btn btn-danger">
@@ -116,12 +74,52 @@
                             </button>
                         </div>
                     </div>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-secondary">
+                            <svg class="bi bi-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+                                <path fill-rule="evenodd"
+                                    d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+                            </svg>
+                            Adicionar Notificação
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descricaoEvento">Descrição do Evento</label>
+                    <textarea class="form-control" id="descricaoEvento" ngModel name="descricao" rows="5"></textarea>
                 </div>
             </div>
-
-
-            <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-2">Salvar Evento</button>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-auto">
+                        <select ngModel name="convite" class="form-control">
+                            <input type="text" ngModel name="emailConvidados" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-danger">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
-        </form>
-</div> -->
+        </div>
+
+
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Salvar Evento</button>
+        </div>
+    </form>
+</div>

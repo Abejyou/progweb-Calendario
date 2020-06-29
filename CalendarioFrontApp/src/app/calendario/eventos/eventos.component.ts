@@ -10,6 +10,7 @@ import { Eventos } from '../models/eventos';
 })
 export class EventosComponent implements OnInit {
 
+  public notificacoes;
   public checkoutForm;
   constructor(private service: EventosService) {
   }
