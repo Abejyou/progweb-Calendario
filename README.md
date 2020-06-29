@@ -17,7 +17,13 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 
 ## Como executar
 
-Acesse a URL do produto. Após isso cadastre-se como usuário da aplicação informando os dados necessários para o cadastro. Uma vez cadastrado o usuário pode ter acesso ao calendário com a todas as funcionalidades que seu nível de usuário possui. (as quais serão descritas mais abaixo)
+1º - Acessar a pasta na qual o arquivo foi clonado, pelo cmd.
+2º - Rodar os seguintes códigos para executar o programa: "npm run install".
+3º - Após terminar de instalar, executar o seguinte código: "npm run Start".
+4º - Após execução, o calendário estará apto a ser utilizado.
+5º - Acesse a URL do produto (https://localhost:4200).
+6º - Após isso, cadastre-se como usuário, na aba 'Cadastrar' e indique seu nome, e-mail e senha.
+7º - Uma vez cadastrado, o usuário deverá logar-se na página 'Login' e assim, terá acesso a todas as funcionalidades do programa (ao qual, o nível do usuário permite).
 
 
 ## Usando CalendarioProgWeb
@@ -26,11 +32,11 @@ Para usar CalendarioProgWeb, siga os seguintes passos (exemplos):
 
 * Abra o navegador e digite o seguinte endereço: `http://localhost/....`
 * Ao abrir a aplicação você deve:
-  * Entrar com usuário e senha para conectar no sistema e ver a própria agenda.
+* Entrar com usuário e senha para conectar no sistema e ver a própria agenda.
 * Clique em inserir um novo evento e configure escolhendo o nome, data, hora, duração e local.
 * Um evento pode ser excluído ou alterado de acordo com a necessidade do usuário.
-* Recuperação de Senha/E-mail - 
- Caso o Usuário não consiga efetuar acesso utilizando seu e-mail e senha, por não se lembrar de qualquer uma das credenciais, é possível  efetuar reaver o cadastro de qualquer uma das das duas informações utilizando-se da credencial que consegue se lembrar assim como o  CPF e a Data de Aniversário do Usuário. Caso preenchida essas três informações corretamente, o usuário poderá cadastrar uma nova credencial que perdeu o acesso.
+<!-- * Recuperação de Senha/E-mail - 
+ Caso o Usuário não consiga efetuar acesso utilizando seu e-mail e senha, por não se lembrar de qualquer uma das credenciais, é possível  efetuar reaver o cadastro de qualquer uma das das duas informações utilizando-se da credencial que consegue se lembrar assim como o  CPF e a Data de Aniversário do Usuário. Caso preenchida essas três informações corretamente, o usuário poderá cadastrar uma nova credencial que perdeu o acesso. -->
 
 * Calendário - 
  Ao efetuar acesso com suas credenciais o usuário estará logado, e agora poderá ter acesso ao calendário contendo os itens de sua agenda, O mês que o calendário abre inicialmente é o mês corrente em que o usuário se encontra. 
