@@ -1,23 +1,23 @@
 <div class="col-12">
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         <div class="form-group">
             <label>Adicionar Título do Evento</label>
-            <input type="text" name="titulo" class="form-control" placeholder="Título do Evento">
+            <input type="text" ngModel name="titulo" class="form-control" placeholder="Título do Evento">
         </div>
         <div class="row">
             <div class="col-auto">
                 <label for="">Data do Evento</label>
-                <input type="date" name="dataHorario" class="form-control">
+                <input type="date" ngModel name="dataHorario" class="form-control">
             </div>
         </div>
         <div class="row">
             <div class="col-auto">
                 <label>Inicio</label>
-                <input type="time" name="horaInicio" class="form-control">
+                <input type="time" ngModel name="horaInicio" class="form-control">
             </div>
             <div class="col-auto">
                 <label>Término</label>
-                <input type="time" name="horaTermino" class="form-control">
+                <input type="time" ngModel name="horaTermino" class="form-control">
             </div>
         </div>
         <div class="row">
@@ -33,7 +33,7 @@
                             </svg>
                         </div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Local" name="local">
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Local" ngModel name="local">
                 </div>
             </div>
         </div>
@@ -42,24 +42,24 @@
                 <div *ngFor="let i of notificacoes">
                     <div class="row">
                         <div class="col-auto">
-                            <select name="tipoNotificacao" class="form-control">
+                            <select ngModel name="tipoNotificacao" class="form-control">
                                 <option value="">Selecione</option>
                                 <option value="notificacao">Notificação</option>
                                 <option value="email">E-mail</option>
                             </select>
                         </div>
                         <div class="col-auto">
-                            <select name="tipoIntervaloTempo" class="form-control">
+                            <select ngModel name="tipoIntervaloTempo" class="form-control">
                                 <option value="dia">Dia</option>
                                 <option value="semana">Semana</option>
                             </select>
                         </div>
                         <div class="col-auto">
-                            <input type="number" name="quantidadeTempo" class="form-control" min="1" max="30"
+                            <input type="number" ngModel name="quantidadeTempo" class="form-control" min="1" max="30"
                                 [value]="i.quantidade">
                         </div>
                         <div class="col-auto">
-                            <input type="time" name="horaNotificacao" class="form-control">
+                            <input type="time" ngModel name="horaNotificacao" class="form-control">
                         </div>
                         <div class="col-auto">
                             <button type="button" class="btn btn-danger">
@@ -91,14 +91,14 @@
                 </div>
                 <div class="form-group">
                     <label for="descricaoEvento">Descrição do Evento</label>
-                    <textarea class="form-control" id="descricaoEvento" name="descricao" rows="5"></textarea>
+                    <textarea class="form-control" id="descricaoEvento" ngModel name="descricao" rows="5"></textarea>
                 </div>
             </div>
             <div class="col-6">
                 <div class="row">
                     <div class="col-auto">
-                        <select name="convite" class="form-control">
-                            <input type="text" name="emailConvidados" class="form-control">
+                        <select ngModel name="convite" class="form-control">
+                            <input type="text" ngModel name="emailConvidados" class="form-control">
                         </select>
                     </div>
                     <div class="col-auto">
@@ -115,8 +115,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
         <div class="col-auto">
             <button type="submit" class="btn btn-primary mb-2">Salvar Evento</button>
         </div>
