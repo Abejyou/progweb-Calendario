@@ -54,7 +54,8 @@ ALTER TABLE `notificacao`
 
 
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 
 ALTER TABLE `evento`
