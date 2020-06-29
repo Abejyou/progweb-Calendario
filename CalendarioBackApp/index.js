@@ -93,7 +93,7 @@ router.post('/evento', (req, res) => {
   }
 });
 
-router.get('/eventospormes', (req, res) =>{
+// router.get('/eventospormes', (req, res) =>{
   
   // const params = req.query;
   // const sqlQuery = `
@@ -102,6 +102,9 @@ router.get('/eventospormes', (req, res) =>{
   //           WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
   //           OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
   //           AND usuario_evento.id_usuario = ${params.usuario} `;
+
+router.get('/eventospormes', (req, res) => {
+  const params = req.query;
   const sqlQuery = `
   SELECT * FROM evento JOIN usuario_evento ON evento.id = usuario_evento.id_evento WHERE ((MONTH(data_inicio) = 6 AND YEAR(data_inicio) = 2020) OR    (MONTH(data_fim) =  6 AND YEAR(data_fim) = 2020)) AND usuario_evento.id_usuario = 1`;
 
@@ -143,7 +146,28 @@ router.post('/notificacao', (req, res) => {
         res.json(results);
       });
   }
+
 });
+
+router.post('/cadastro', (req, res) => {
+  console.log(req);
+  console.log(req.query);
+  execQuery("SELECT u FROM usuario WHERE u.email = '" + req.query.emailcadastro + "'", res, (data));
+  if (!data) {
+    execQuery("INSERT usuario (nome, email, senha)" +
+      " VALUES('" + req.query.nomecadastro + "', '" + req.query.emailcadastro + "', '" + req.query.senhacadastro + "')", res, (results) => {
+        res.json(results);
+        res.redirect("/login");
+      });
+  }
+  else{
+    console.log("E-mail ja cadastrado!");
+  }
+
+});
+
+router.post('/login')
+
 
 
 
