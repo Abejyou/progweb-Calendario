@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Eventos } from '../calendario/models/eventos';
 
 @Injectable()
@@ -15,9 +16,32 @@ export class EventosService {
   ngOnInit(): void {
   }
 
-  eventospormes(): Observable<Eventos[]>{
+  eventospormes(): Observable<Eventos[]> {
     return this.http
-          .get<Eventos[]>(this.eventoUrl + "eventospormes");
-    }
+      .get<Eventos[]>(this.eventoUrl + "eventospormes");
+  }
+
+  add(evento: Eventos): Observable<Eventos> {
+    return this.http.post<Eventos>(this.eventoUrl, evento, this.httpOptions).pipe(
+      tap((newEvento: Eventos) => console.log(`added evento w/ id=${newEvento.id}`)),
+      catchError(this.handleError<Eventos>(`add`))
+    );
+  }
+
+  addNotificacao(evento: Eventos): Observable<Eventos> {
+    console.log(evento);
+    return this.http.post<Eventos>(this.eventoUrl, evento, this.httpOptions).pipe(
+      tap((newEvento: Eventos) => console.log(`added evento w/ id=${newEvento.id}`)),
+      catchError(this.handleError<Eventos>(`add`))
+    );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+
+      return of(result as T);
+    };
+  }
 
 }

@@ -13,7 +13,8 @@ export class EventosComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  add(name: string): void {
+  onSubmit(data): void {
+    console.log(data);
     if (!name) { return; }
     var evento = {
       titulo_evento: 'teste',
@@ -23,8 +24,8 @@ export class EventosComponent implements OnInit {
       descricao: 'string',
     };
     //this.service.add(evento as Eventos)
-      //.subscribe(hero => {
-      //});
+    //.subscribe(hero => {
+    //});
   }
 
 }

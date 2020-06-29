@@ -1,5 +1,5 @@
 <div class="col-12">
-    <form>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
         <div class="form-group">
             <label>Adicionar Título do Evento</label>
             <input type="text" name="titulo" class="form-control" placeholder="Título do Evento">

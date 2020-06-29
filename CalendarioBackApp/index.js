@@ -34,6 +34,13 @@ function execQuery(query, res, callback) {
 
 router.get('/', (req, res) => res.json({ message: 'Server Funcionando!' }));
 app.use('/', router);
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 
 
@@ -94,14 +101,14 @@ router.post('/evento', (req, res) => {
 });
 
 // router.get('/eventospormes', (req, res) =>{
-  
-  // const params = req.query;
-  // const sqlQuery = `
-  //           SELECT * FROM evento 
-  //           JOIN usuario_evento ON evento.id = usuario_evento.id_evento
-  //           WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
-  //           OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
-  //           AND usuario_evento.id_usuario = ${params.usuario} `;
+
+// const params = req.query;
+// const sqlQuery = `
+//           SELECT * FROM evento 
+//           JOIN usuario_evento ON evento.id = usuario_evento.id_evento
+//           WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
+//           OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
+//           AND usuario_evento.id_usuario = ${params.usuario} `;
 
 router.get('/eventospormes', (req, res) => {
   const params = req.query;
@@ -112,7 +119,7 @@ router.get('/eventospormes', (req, res) => {
 
 });
 
-router.get('/eventospordia', (req, res) =>{
+router.get('/eventospordia', (req, res) => {
   const params = req.query;
   const sqlQuery = `
                       SELECT * FROM evento  
@@ -120,7 +127,7 @@ router.get('/eventospordia', (req, res) =>{
                       WHERE '${params.dia}' BETWEEN DATE(data_inicio) AND  DATE(data_fim)
                       AND usuario_evento.id_usuario = ${params.usuario}
                    `;
-  
+
   execQuery(sqlQuery, res, results => res.json(results));
 });
 
@@ -160,7 +167,7 @@ router.post('/cadastro', (req, res) => {
         res.redirect("/login");
       });
   }
-  else{
+  else {
     console.log("E-mail ja cadastrado!");
   }
 
