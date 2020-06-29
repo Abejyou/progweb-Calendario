@@ -157,25 +157,34 @@ router.post('/notificacao', (req, res) => {
 });
 
 router.post('/cadastro', (req, res) => {
-  console.log(req);
-  console.log(req.query);
-  execQuery("SELECT u FROM usuario WHERE u.email = '" + req.query.emailcadastro + "'", res, (data));
-  if (!data) {
-    execQuery("INSERT usuario (nome, email, senha)" +
-      " VALUES('" + req.query.nomecadastro + "', '" + req.query.emailcadastro + "', '" + req.query.senhacadastro + "')", res, (results) => {
-        res.json(results);
-        res.redirect("/login");
-      });
-  }
-  else {
-    console.log("E-mail ja cadastrado!");
-  }
+  execQuery("SELECT * FROM usuario WHERE usuario.email LIKE '" + req.query.emailcadastro + "'", res, (data) => {
+    if (!data) {
+      execQuery("INSERT usuario (nome, email, senha)" +
+        " VALUES('" + req.query.nomecadastro + "', '" + req.query.emailcadastro + "', '" + req.query.senhacadastro + "')", res, (results) => {
+          res.json(results);
+          res.status(200);
+        });
+    } else {
+      console.log("Email já cadastrado.");
+    }
+  });
+})
 
-});
+router.post('/login', (req, res) => {
+  var params = req.query;
+  const teste = `SELECT * FROM usuario WHERE usuario.email LIKE '${params.emaillogin}' AND usuario.senha LIKE '${params.senhalogin}'`
+  execQuery(teste, res, results => {
+    if (results){
+      res.json({ message: 'Logado!' })
+    }
+    else{
+      res.json({error: 'Não foi possivel logar.'})
+    }
+  
+  });
 
-router.post('/login')
 
-
+})
 
 
 app.listen(config.serverPort, function () {
