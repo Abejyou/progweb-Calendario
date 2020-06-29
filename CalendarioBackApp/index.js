@@ -35,11 +35,15 @@ function execQuery(query, res, callback) {
 router.get('/', (req, res) => res.json({ message: 'Server Funcionando!' }));
 app.use('/', router);
 
+
+
 router.get('/usuario', (req, res) => {
   execQuery('SELECT * FROM usuario', res, (results) => {
     res.json(results);
   });
 });
+
+
 router.get('/evento', (req, res) => {
   execQuery('SELECT E.*, N.id as notificacao_id, N.data_notificacao as notificacao_data_notificacao ' +
     'FROM evento E LEFT JOIN notificacao N ON N.id_evento = E.id', res, (data) => {
@@ -89,6 +93,30 @@ router.post('/evento', (req, res) => {
   }
 });
 
+router.get('/eventospormes', (req, res) =>{
+  const params = req.query;
+  const sqlQuery = `
+            SELECT * FROM evento 
+            JOIN usuario_evento ON evento.id = usuario_evento.id_evento
+            WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
+            OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
+            AND usuario_evento.id_usuario = ${params.usuario} `;
+  execQuery(sqlQuery, res, results => res.json(results));
+
+});
+
+router.get('/eventospordia', (req, res) =>{
+  const params = req.query;
+  const sqlQuery = `
+                      SELECT * FROM evento  
+                      JOIN usuario_evento ON usuario_evento.id_evento = evento.id
+                      WHERE '${params.dia}' BETWEEN DATE(data_inicio) AND  DATE(data_fim)
+                      AND usuario_evento.id_usuario = ${params.usuario}
+                   `;
+  
+  execQuery(sqlQuery, res, results => res.json(results));
+});
+
 router.get('/notificacao', (req, res) => {
   execQuery('SELECT * FROM notificacao', res, (results) => {
     res.json(results);
@@ -112,6 +140,8 @@ router.post('/notificacao', (req, res) => {
       });
   }
 });
+
+
 
 app.listen(config.serverPort, function () {
   console.log('http://localhost:' + config.serverPort);

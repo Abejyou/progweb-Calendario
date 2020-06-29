@@ -57,7 +57,7 @@ export class DiaComponent implements OnInit {
   }
 
   enviaParaEvento(evento:any){
-    
+    console.log("Oie")
   }
 
 }

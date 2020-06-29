@@ -6,4 +6,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'calendario-progweb';
+  usuario = null
+  ngOnInit(): void {
+    
+
+  }
+
+  retornaUsuarioLogado(){
+    return localStorage.getItem('Usuario')
+  }
+
 }
