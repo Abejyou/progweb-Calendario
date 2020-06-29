@@ -5,15 +5,17 @@
     <thead>
         <th scope="col">Titulo</th>
         <th scope="col">Inicio</th>
+        <th scope="col">Local</th>
         <th scope="col">Fim</th>
     </thead>
     <tbody>
-        <tr *ngFor="let evento of dia.eventos" 
+        <tr *ngFor="let evento of eventosList" 
             id="{{evento.id}}"
             (click)="enviaParaEvento(evento)">
-            <td>{{evento.titulo}}</td>
-            <td>{{evento.inicio}}</td>
-            <td>{{evento.fim}}</td>
+            <td>{{evento.titulo_evento}}</td>
+            <td>{{evento.local_evento}}</td>
+            <td>{{evento.data_inicio.toLocaleString()}}</td>
+            <td>{{evento.data_fim.toLocaleString()}}</td>
         </tr>
         
     </tbody>
