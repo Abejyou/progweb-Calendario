@@ -34,11 +34,13 @@ function execQuery(query, res, callback) {
 
 router.get('/', (req, res) => res.json({ message: 'Server Funcionando!' }));
 app.use('/', router);
-app.all('*', function (req, res, next) {
+
+router.all('*', function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
+  console.log(`teste`)
   next();
 });
 
@@ -100,26 +102,22 @@ router.post('/evento', (req, res) => {
   }
 });
 
-// router.get('/eventospormes', (req, res) =>{
-
-// const params = req.query;
-// const sqlQuery = `
-//           SELECT * FROM evento 
-//           JOIN usuario_evento ON evento.id = usuario_evento.id_evento
-//           WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
-//           OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
-//           AND usuario_evento.id_usuario = ${params.usuario} `;
-
-router.get('/eventospormes', (req, res) => {
+router.get('/eventospormes', (req, res) =>{
+  
   const params = req.query;
   const sqlQuery = `
-  SELECT * FROM evento JOIN usuario_evento ON evento.id = usuario_evento.id_evento WHERE ((MONTH(data_inicio) = 6 AND YEAR(data_inicio) = 2020) OR    (MONTH(data_fim) =  6 AND YEAR(data_fim) = 2020)) AND usuario_evento.id_usuario = 1`;
-
+            SELECT * FROM evento 
+          SELECT * FROM evento 
+            SELECT * FROM evento 
+            JOIN usuario_evento ON evento.id = usuario_evento.id_evento
+            WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
+            OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
+            AND usuario_evento.id_usuario = ${params.usuario} `;
   execQuery(sqlQuery, res, results => res.json(results));
 
 });
 
-router.get('/eventospordia', (req, res) => {
+router.get('/eventospordia', (req, res) =>{
   const params = req.query;
   const sqlQuery = `
                       SELECT * FROM evento  
@@ -127,7 +125,7 @@ router.get('/eventospordia', (req, res) => {
                       WHERE '${params.dia}' BETWEEN DATE(data_inicio) AND  DATE(data_fim)
                       AND usuario_evento.id_usuario = ${params.usuario}
                    `;
-
+  
   execQuery(sqlQuery, res, results => res.json(results));
 });
 
@@ -157,34 +155,25 @@ router.post('/notificacao', (req, res) => {
 });
 
 router.post('/cadastro', (req, res) => {
-  execQuery("SELECT * FROM usuario WHERE usuario.email LIKE '" + req.query.emailcadastro + "'", res, (data) => {
-    if (!data) {
-      execQuery("INSERT usuario (nome, email, senha)" +
-        " VALUES('" + req.query.nomecadastro + "', '" + req.query.emailcadastro + "', '" + req.query.senhacadastro + "')", res, (results) => {
-          res.json(results);
-          res.status(200);
-        });
-    } else {
-      console.log("Email já cadastrado.");
-    }
-  });
-})
+  console.log(req);
+  console.log(req.query);
+  execQuery("SELECT u FROM usuario WHERE u.email = '" + req.query.emailcadastro + "'", res, (data));
+  if (!data) {
+    execQuery("INSERT usuario (nome, email, senha)" +
+      " VALUES('" + req.query.nomecadastro + "', '" + req.query.emailcadastro + "', '" + req.query.senhacadastro + "')", res, (results) => {
+        res.json(results);
+        res.redirect("/login");
+      });
+  }
+  else{
+    console.log("E-mail ja cadastrado!");
+  }
 
-router.post('/login', (req, res) => {
-  var params = req.query;
-  const teste = `SELECT * FROM usuario WHERE usuario.email LIKE '${params.emaillogin}' AND usuario.senha LIKE '${params.senhalogin}'`
-  execQuery(teste, res, results => {
-    if (results){
-      res.json({ message: 'Logado!' })
-    }
-    else{
-      res.json({error: 'Não foi possivel logar.'})
-    }
-  
-  });
+});
+
+router.post('/login')
 
 
-})
 
 
 app.listen(config.serverPort, function () {
