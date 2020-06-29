@@ -37,7 +37,8 @@ export class EventosService {
   }
 
   add(evento: Eventos): Observable<Eventos> {
-    return this.http.post<Eventos>(this.eventoUrl, evento, this.httpOptions).pipe(
+    console.log(evento);
+    return this.http.post(this.eventoUrl + 'evento', evento, this.httpOptions).pipe(
       tap((newEvento: Eventos) => console.log(`added evento w/ id=${newEvento.id}`)),
       catchError(this.handleError<Eventos>(`add`))
     );
