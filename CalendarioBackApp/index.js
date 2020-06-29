@@ -103,16 +103,16 @@ router.post('/evento', (req, res) => {
 });
 
 router.get('/eventospormes', (req, res) =>{
-  
+
   const params = req.query;
   const sqlQuery = `
-            SELECT * FROM evento 
-          SELECT * FROM evento 
             SELECT * FROM evento 
             JOIN usuario_evento ON evento.id = usuario_evento.id_evento
             WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
             OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
             AND usuario_evento.id_usuario = ${params.usuario} `;
+
+  console.log(sqlQuery)
   execQuery(sqlQuery, res, results => res.json(results));
 
 });

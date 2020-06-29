@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EventosService } from  '../../service/eventos.service';
+import { Eventos } from '../models/eventos';
 
 @Component({
   selector: 'app-dia',
@@ -9,10 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DiaComponent implements OnInit {
 
   data:any;
-  dia:any;
+  eventos:Eventos[];
 
   constructor( private route: ActivatedRoute,
-               private router: Router) { }
+               private eventosService: EventosService) { }
 
   ngOnInit(): void {
    
@@ -21,39 +23,18 @@ export class DiaComponent implements OnInit {
                 this.data = new Date(params['data']);
               });
 
-    //Metodo de integrar com o Backend e retornar objeto de listas
-    this.dia = {
-      eventos:[
-        { 
-          id:1, 
-          titulo: "Teste Evento - 1",
-          data: new Date(this.data),
-          inicio: "12:00",
-          fim: "23:30"
+      this.eventosService.eventospordia(this.data, 1)
+      .subscribe(
+        eventos => {
+          this.eventos = eventos;
+          console.log(eventos)
         },
-        { 
-          id:2,
-          titulo: "Teste Evento - 2",
-          data: new Date(this.data),
-          inicio: "12:00",
-          fim: "23:30"
-        },
-        { 
-          id:2,
-          titulo: "Teste Evento - 3",
-          data: new Date(this.data),
-          inicio: "12:00",
-          fim: "23:30"
-        },
-        { 
-          id:2,
-          titulo: "Teste Evento - 4",
-          data: new Date(this.data),
-          inicio: "12:00",
-          fim: "23:30"
+        err=>{
+          console.log(err)
         }
-      ]
-    }
+      )
+    
+   
   }
 
   enviaParaEvento(evento:any){

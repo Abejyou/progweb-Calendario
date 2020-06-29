@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Eventos } from '../calendario/models/eventos';
@@ -16,9 +16,24 @@ export class EventosService {
   ngOnInit(): void {
   }
 
-  eventospormes(): Observable<Eventos[]> {
-    return this.http
-      .get<Eventos[]>(this.eventoUrl + "eventospormes");
+  eventospormes(mes, ano, usuario): Observable<Eventos[]> {
+    let params = new HttpParams()
+    params = params.append('mes', mes);
+    params = params.append('ano', ano);
+    params = params.append('usuario', usuario);
+
+    return this.http      
+      .get<Eventos[]>(this.eventoUrl + "eventospormes", { params });
+  }
+
+
+  eventospordia(dia, usuario): Observable<Eventos[]> {
+    let params = new HttpParams()
+    params = params.append('dia', dia);
+    params = params.append('usuario', usuario);
+
+    return this.http      
+      .get<Eventos[]>(this.eventoUrl + "eventospordia", { params });
   }
 
   add(evento: Eventos): Observable<Eventos> {

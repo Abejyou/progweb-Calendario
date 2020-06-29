@@ -36,7 +36,7 @@ export class CalendarioComponent implements OnInit {
     this.diasAntesComecoMes = new Array(this.dataAtual.getDay());
     this.dias = []
 
-    this.eventosService.eventospormes()
+    this.eventosService.eventospormes(this.mes, this.ano, 1)
         .subscribe(
           eventos => {
             this.eventoList = eventos;
@@ -53,6 +53,7 @@ export class CalendarioComponent implements OnInit {
       arrDia.data = new Date(this.ano, this.mes, i);      
       this.dias.push(arrDia);      
     }
+
 
   }
 
