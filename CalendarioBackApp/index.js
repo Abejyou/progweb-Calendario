@@ -93,14 +93,21 @@ router.post('/evento', (req, res) => {
   }
 });
 
+// router.get('/eventospormes', (req, res) =>{
+  
+  // const params = req.query;
+  // const sqlQuery = `
+  //           SELECT * FROM evento 
+  //           JOIN usuario_evento ON evento.id = usuario_evento.id_evento
+  //           WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
+  //           OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
+  //           AND usuario_evento.id_usuario = ${params.usuario} `;
+
 router.get('/eventospormes', (req, res) => {
   const params = req.query;
   const sqlQuery = `
-            SELECT * FROM evento 
-            JOIN usuario_evento ON evento.id = usuario_evento.id_evento
-            WHERE ((MONTH(data_inicio) = ${params.mes} AND YEAR(data_inicio) = ${params.ano})
-            OR    (MONTH(data_fim) =  ${params.mes} AND YEAR(data_fim) = ${params.ano}))
-            AND usuario_evento.id_usuario = ${params.usuario} `;
+  SELECT * FROM evento JOIN usuario_evento ON evento.id = usuario_evento.id_evento WHERE ((MONTH(data_inicio) = 6 AND YEAR(data_inicio) = 2020) OR    (MONTH(data_fim) =  6 AND YEAR(data_fim) = 2020)) AND usuario_evento.id_usuario = 1`;
+
   execQuery(sqlQuery, res, results => res.json(results));
 
 });

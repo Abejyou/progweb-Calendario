@@ -20,6 +20,9 @@ import { DiaCalendarioComponent } from './calendario/dia-calendario/dia-calendar
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { DiaComponent } from './calendario/dia/dia.component';
+import {EventosService} from './service/eventos.service'
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,9 +42,10 @@ import { DiaComponent } from './calendario/dia/dia.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+    AppRoutingModule,
+    HttpClientModule
+  ],  
+  providers: [EventosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
